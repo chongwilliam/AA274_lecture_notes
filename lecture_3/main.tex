@@ -371,6 +371,16 @@ Given the initial and final conditions $z(0), \: \dot{z}(0), \: \dots , z^{(q)}(
 
 To summarize, for differentially flat nonlinear systems, nominal trajectories and control inputs can can be computed in a more computationally efficient way.
 
+Time-scaling can be used to address control constraints in the trajectory generation problem produced by differential flatness problems.  Originally given as a function of time, the trajectory can be re-parameterized in terms of the arc-length of the path.  After determining a new control history as a function of the arc-length, time is scaled to generate a new time history to satisfy the new control history.  The arc-length path parameter s is given by
+$$ \dot{s}(t) = V(t),  \ s(0)=0 $$ 
+With the new trajectory parametrization using the arc-length s, the following equations are derived:
+
+$$\frac{ds}{d\tau} = \widetilde{V}(s) , \ \tau(0)=0$$
+$$\tau(s) = \int_{0}^{s} \frac{1}{\widetilde{V}(s’)}\ ds’$$
+$$\widetilde{\omega}(s) = \frac{d\theta}{d\tau}\ = \frac{d\theta}{dt}\frac{dt}{ds}\frac{ds}{d\tau}\ = \frac{\omega(s)}{V(s)}*\widetilde{V}(s)$$
+
+$ \widetilde{V}(s)$ and $\widetilde{\omega}(s) $ are alternative velocity and angular velocity control histories based on the arc-length parameter s.  Thus, given control constraints in V and $\omega$, then $ \widetilde{V}(s)$ and $\widetilde{\omega}(s) $ can be chosen such that the control constraints are not violated.  Specifically,   $ \widetilde{V}(s)$ is derived from taking the minimum value of the velocity constraint limit, the original velocity at the correlated time step for an arc-length value s, and the value given by  $ \frac{\widetilde{\omega}(s)}{\omega(s)}*V(s)$ for the maximum value of $\widetilde{\omega}(s)$ allowed by the control constraint.  $\widetilde{\omega}(s) $ is then recalculated with the last equation, and a new, rescaled time history is generated from using the integral equation shown above.
+
 \section{Closed-loop Control}
 In the case of closed-loop control, the goal is to find
 \begin{equation}

@@ -80,6 +80,12 @@ Section two discusses the use of cameras for external vision and computer vision
 
 \subsection{Motivation and Sensor basics}
 To accomplish its objective, an autonomous system first requires knowledge about its environment. By using sensors to take measurements, the autonomous system will then be able to extract meaningful information from those measurements. For example, self-driving cars use multiple sensors such as laser range finders (LiDARs) usually mounted on the top, stereo cameras for visual recognition, GPS to track its global position, radar for long range detection and ultrasonic sensors for short range detection.
+\begin{figure}[H]
+\centering
+        \includegraphics[width =10 cm]{lecture_4/imgs/selfdrivingcar.png}
+        \caption{Self Driving Car Example}
+\end{figure}
+
 \subsubsection{Classification of Sensors}
 
 \textbf{Proprioceptive}: Measures the internal robot parameters (e.g. motor speed, wheel load, robot arm joint angles, battery voltage etc.). \newline \newline
@@ -117,11 +123,6 @@ The following performance metrics must be tested in a real environment:
     \item \textbf{Error analysis}: Performed via a probabilistic analysis. Common assumptions include a symmetric, unimodal, Gaussian distribution which is convenient, but often a coarse simplification. Error propagation is characterized by the error propagation law
 \end{itemize}
 
-\textbf{Examples of errors}
-\begin{itemize}
-    \item \textbf{Systematic errors}: Common examples of systematic errors come from temperature and vibration effects on the sensor.  For example, resonators in sensors (such as MEMS inertial accelerometers and gyroscopes) will experience thermal expansion/contraction due to temperature gradients in the resonator structure, which in turn introduces errors in measurements based on the control system designed around the resonator.  Temperature also affects the scale factor and bias of on-board electronics on the sensor such as ADCs.  For vibration, many sensors with resonators experience vibration sensitivity in different frequency regions due to the excitation of vibration modes.  In addition, exteroceptive sensors accrue measurement errors due to the instability of the sensor platform induced by vibrations.  These errors are typically calibrated out with a scale factor and bias profile over multiple temperature and vibration ranges as well as with data processing techniques.  
-    \item \textbf{Random errors}: Random errors are typically attributed to random noise processes that affect the sensor's measurements.  Pink and white noise are some examples of noise profiles that are used to describe noise based on its power spectral density.  For example, pink noise has a PSD that scales with the inverse of frequency which can be attributed to, for example, amplifiers on the sensor board.  White noise has a flat PSD which can be attributed to, for example, Brownian processes that are intrinsic to the sensor's operation.  Typically, an Allan Deviation curve is generated for each sensor while measuring a flat output over a specified period of time in order to characterize the noise floor and bias instability to provide an estimate for the noise produced by the sensor.    
-
 \textbf{Challenges in characterizing error}
 \begin{itemize}
     \item \textbf{Blurring of systematic and random errors}: Active ranging sensors have failure modes caused by certain relative positions of the sensor with environment targets (e.g. specular reflections from sonar sensors at specific angles to a smooth sheetrock wall).
@@ -154,7 +155,11 @@ In mobile robotics, quadrature encoder are often used, in which case a second il
         \label{fig:encoder}
 \end{figure}
 
-
+\begin{figure}[H]
+\centering
+        \includegraphics[width =5 cm]{lecture_4/imgs/encoder2.png}
+        \caption{Geometric Active Ranging}
+\end{figure}
 
 
 
@@ -241,6 +246,11 @@ where d is the distance traveled, c is the speed of wave propagation, and t is t
 
 \subsubsection{Geometric Active Ranging}
 Geometric active ranging sensors use geometric properties in the measurements to establish distance readings. Optical triangulation sensors (1D) transmit a collimated beam toward the target and use lens to collect reflected light and project it onto a position-sensitive device or linear camera. Structured light sensors (2D or 3D) project a known light pattern (e.g., point, line, or texture) onto the environment. The reflection is captured by a receiver and then, together with known geometric values, range is estimated via triangulation. Figure \ref{fig:3D_light} shows systems that project light textures. CCD or CMOS receiver can then take photos and filter these images to identify the pattern’s reflection based on the geometrical deformation of the pattern of light.
+\begin{figure}[H]
+\centering
+        \includegraphics[width =12 cm]{lecture_4/imgs/geometric.png}
+        \caption{Geometric Active Ranging}
+\end{figure}
 \subsection{Other Sensors}
 
 Some classical examples of other sensors include radars that use Doppler effect to produce velocity data. Tactile sensors are critical to mobile, autonomous robots and are well understood and easily implemented. Some emerging technologies include artificial skins for obtaining tactile measurements and neuromorphic camera that detect motions with neurons spiking in changes of illumination. For example, small drones are often equipped with neuromorphic cameras which has very small power consumption.
@@ -313,7 +323,7 @@ With this more complete camera model, we can discuss the tradeoffs involved in m
 \bibliography{reference}
 
 \subsubsection*{Contributors}
-Winter 2019: [YOUR NAMES HERE
+Winter 2019: William Chong, Yiwen Zhang, Nikhil Bhattasali, Stephen Anthony Palmieri
 \\
 Winter 2018: Qizhan Tam, Ben Goeing, Bilan Jackie Yang, Marc Deetjen
 
